@@ -98,9 +98,10 @@ function draw() {
     }
     
     //jump when the space key is pressed
-    if(keyDown("space")&& trex.y >= height-50) {
+    if(touches.length>0||keyDown("space")&& trex.y >= height-50) {
         trex.velocityY = -12;
         jumpSound.play ()
+        touches=[]
     }
     if (score%500===0&&score>0) {
       checkPointSound.play ()
@@ -136,9 +137,9 @@ function draw() {
      
      obstaclesGroup.setVelocityXEach(0);
      cloudsGroup.setVelocityXEach(0);
-     if (mousePressedOver (restart)) {
+     if (touches.length>0||mousePressedOver (restart)) {
       reset ()
-  
+  touches=[]
     }
    }
   
